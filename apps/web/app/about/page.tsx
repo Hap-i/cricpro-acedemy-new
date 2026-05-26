@@ -39,17 +39,20 @@ export default function AboutPage() {
             <h2 className="text-2xl md:text-3xl font-bold mb-6">Our Story</h2>
             <div className="space-y-4 text-muted-foreground">
               <p>
-                Next Gen Cricket Academy was founded with a simple mission: to provide
-                quality cricket training in a premium environment that rival clubs couldn't match.
+                At Next Generation Cricket Academy, our mission is simple — to deliver elite cricket training in a 
+                premium environment built for players who want to develop their game to the highest standard.
               </p>
               <p>
-                We believe every cricketer deserves access to professional facilities and
-                coaching, whether they're just starting out or working towards county level.
+                We believe every cricketer should have access to professional coaching, high-quality facilities, and the right support system, 
+                whether they’re picking up a bat for the first time or progressing towards county-level cricket.
               </p>
               <p>
-                Our indoor facility allows year-round training regardless of weather, with
-                professional lanes, equipment, and experienced coaches ready to help you
-                improve your game.
+                Our state-of-the-art indoor facility provides year-round training in all conditions, featuring professional lanes, quality equipment, and 
+                experienced coaches dedicated to helping every player improve with confidence.
+              </p>
+              <p>
+                As the season moves into summer, players also benefit from access to our outdoor training facilities, 
+                creating the perfect environment to develop every aspect of the game
               </p>
             </div>
           </div>

@@ -83,7 +83,7 @@ export function HeroSection() {
             transition={{ duration: 0.6, delay: 0.35 }}
             className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto"
           >
-            Where casual players become serious cricketers. Book your lane, join a session, or train with our expert coaches.
+            Where casual players become serious cricketers. Reserve a lane, drop into group sessions, or level up with pro coaching.
           </motion.p>
 
           {/* CTAs */}

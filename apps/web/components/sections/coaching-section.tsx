@@ -14,7 +14,7 @@ export function CoachingSection() {
           <FadeIn>
             <Badge variant="outline" className="mb-4 border-primary/30 text-primary">Elite Development</Badge>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Expert Coaching, Personal Attention
+               Elite Coaching with Individual Attention
             </h2>
             <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto">
               {services.coaching.description}
