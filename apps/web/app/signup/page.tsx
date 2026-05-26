@@ -1,6 +1,6 @@
 "use client"
 
-import { Suspense, useState } from "react"
+import { useState } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import Link from "next/link"
 import { Button } from "@workspace/ui/components/button"
@@ -14,10 +14,10 @@ import {
   CardDescription,
 } from "@workspace/ui/components/card"
 import { Alert, AlertDescription } from "@workspace/ui/components/alert"
-import { Loader2, CheckCircle } from "lucide-react"
+import { Loader2, CheckCircle, Eye, EyeOff } from "lucide-react"
 import { supabase } from "@/lib/services/supabase"
 
-function SignupForm() {
+export default function SignupPage() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const from = searchParams.get("from") ?? "/"
@@ -29,6 +29,8 @@ function SignupForm() {
     password: "",
     confirm: "",
   })
+  const [showPassword, setShowPassword] = useState(false)
+  const [showConfirm, setShowConfirm] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
   const [success, setSuccess] = useState(false)
@@ -68,136 +70,40 @@ function SignupForm() {
       return
     }
 
+    // If session exists immediately (email confirmation disabled), redirect
     if (data.session) {
       router.push(from)
       router.refresh()
       return
     }
 
+    // Otherwise show "check your email" message
     setSuccess(true)
     setLoading(false)
   }
 
   if (success) {
     return (
-      <div className="text-center">
-        <div className="mb-4 flex justify-center">
-          <div className="rounded-full bg-green-100 p-4">
-            <CheckCircle className="h-10 w-10 text-green-600" />
+      <main className="flex min-h-screen items-center justify-center px-4">
+        <div className="w-full max-w-md text-center">
+          <div className="mb-4 flex justify-center">
+            <div className="rounded-full bg-green-100 p-4">
+              <CheckCircle className="h-10 w-10 text-green-600" />
+            </div>
           </div>
+          <h1 className="mb-2 text-2xl font-bold">Check your email</h1>
+          <p className="mb-6 text-muted-foreground">
+            We've sent a confirmation link to <strong>{formData.email}</strong>.
+            Click the link to activate your account.
+          </p>
+          <Button asChild variant="outline">
+            <Link href="/login">Back to Login</Link>
+          </Button>
         </div>
-        <h2 className="mb-2 text-xl font-bold">Check your email</h2>
-        <p className="mb-6 text-muted-foreground">
-          We've sent a confirmation link to <strong>{formData.email}</strong>.
-          Click the link to activate your account.
-        </p>
-        <Button asChild variant="outline">
-          <Link href="/login">Back to Login</Link>
-        </Button>
-      </div>
+      </main>
     )
   }
 
-  return (
-    <>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        {error && (
-          <Alert variant="destructive">
-            <AlertDescription>{error}</AlertDescription>
-          </Alert>
-        )}
-
-        <div className="space-y-2">
-          <Label htmlFor="fullName">Full Name *</Label>
-          <Input
-            id="fullName"
-            placeholder="John Smith"
-            value={formData.fullName}
-            onChange={(e) => update("fullName", e.target.value)}
-            required
-            autoComplete="name"
-          />
-        </div>
-
-        <div className="space-y-2">
-          <Label htmlFor="email">Email *</Label>
-          <Input
-            id="email"
-            type="email"
-            placeholder="your@email.com"
-            value={formData.email}
-            onChange={(e) => update("email", e.target.value)}
-            required
-            autoComplete="email"
-          />
-        </div>
-
-        <div className="space-y-2">
-          <Label htmlFor="phone">
-            Phone{" "}
-            <span className="text-xs text-muted-foreground">(optional)</span>
-          </Label>
-          <Input
-            id="phone"
-            type="tel"
-            placeholder="07xxx xxx xxx"
-            value={formData.phone}
-            onChange={(e) => update("phone", e.target.value)}
-            autoComplete="tel"
-          />
-        </div>
-
-        <div className="space-y-2">
-          <Label htmlFor="password">Password *</Label>
-          <Input
-            id="password"
-            type="password"
-            placeholder="Min. 8 characters"
-            value={formData.password}
-            onChange={(e) => update("password", e.target.value)}
-            required
-            autoComplete="new-password"
-          />
-        </div>
-
-        <div className="space-y-2">
-          <Label htmlFor="confirm">Confirm Password *</Label>
-          <Input
-            id="confirm"
-            type="password"
-            placeholder="Repeat your password"
-            value={formData.confirm}
-            onChange={(e) => update("confirm", e.target.value)}
-            required
-            autoComplete="new-password"
-          />
-        </div>
-
-        <Button type="submit" className="w-full" disabled={loading}>
-          {loading ? (
-            <>
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Creating account…
-            </>
-          ) : (
-            "Create Account"
-          )}
-        </Button>
-      </form>
-      <p className="mt-6 text-center text-sm text-muted-foreground">
-        Already have an account?{" "}
-        <Link
-          href={`/login?from=${encodeURIComponent(from)}`}
-          className="font-medium text-primary hover:underline"
-        >
-          Sign in
-        </Link>
-      </p>
-    </>
-  )
-}
-
-export default function SignupPage() {
   return (
     <main className="flex min-h-screen items-center justify-center px-4 py-12">
       <div className="w-full max-w-md">
@@ -214,11 +120,138 @@ export default function SignupPage() {
             <CardDescription>All fields marked * are required</CardDescription>
           </CardHeader>
           <CardContent>
-            <Suspense fallback={<div className="h-64" />}>
-              <SignupForm />
-            </Suspense>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              {error && (
+                <Alert variant="destructive">
+                  <AlertDescription>{error}</AlertDescription>
+                </Alert>
+              )}
+
+              <div className="space-y-2">
+                <Label htmlFor="fullName">Full Name *</Label>
+                <Input
+                  id="fullName"
+                  placeholder="John Smith"
+                  value={formData.fullName}
+                  onChange={(e) => update("fullName", e.target.value)}
+                  required
+                  autoComplete="name"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="email">Email *</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="your@email.com"
+                  value={formData.email}
+                  onChange={(e) => update("email", e.target.value)}
+                  required
+                  autoComplete="email"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="phone">
+                  Phone{" "}
+                  <span className="text-xs text-muted-foreground">
+                    (optional)
+                  </span>
+                </Label>
+                <Input
+                  id="phone"
+                  type="tel"
+                  placeholder="07xxx xxx xxx"
+                  value={formData.phone}
+                  onChange={(e) => update("phone", e.target.value)}
+                  autoComplete="tel"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="password">Password *</Label>
+                <div className="relative">
+                  <Input
+                    id="password"
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Min. 8 characters"
+                    value={formData.password}
+                    onChange={(e) => update("password", e.target.value)}
+                    required
+                    autoComplete="new-password"
+                    className="pr-10"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword((p) => !p)}
+                    className="absolute top-1/2 right-3 -translate-y-1/2 text-muted-foreground transition-colors hover:text-foreground"
+                    tabIndex={-1}
+                    aria-label={
+                      showPassword ? "Hide password" : "Show password"
+                    }
+                  >
+                    {showPassword ? (
+                      <EyeOff className="h-4 w-4" />
+                    ) : (
+                      <Eye className="h-4 w-4" />
+                    )}
+                  </button>
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="confirm">Confirm Password *</Label>
+                <div className="relative">
+                  <Input
+                    id="confirm"
+                    type={showConfirm ? "text" : "password"}
+                    placeholder="Repeat your password"
+                    value={formData.confirm}
+                    onChange={(e) => update("confirm", e.target.value)}
+                    required
+                    autoComplete="new-password"
+                    className="pr-10"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowConfirm((p) => !p)}
+                    className="absolute top-1/2 right-3 -translate-y-1/2 text-muted-foreground transition-colors hover:text-foreground"
+                    tabIndex={-1}
+                    aria-label={showConfirm ? "Hide password" : "Show password"}
+                  >
+                    {showConfirm ? (
+                      <EyeOff className="h-4 w-4" />
+                    ) : (
+                      <Eye className="h-4 w-4" />
+                    )}
+                  </button>
+                </div>
+              </div>
+
+              <Button type="submit" className="w-full" disabled={loading}>
+                {loading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Creating account…
+                  </>
+                ) : (
+                  "Create Account"
+                )}
+              </Button>
+            </form>
           </CardContent>
         </Card>
+
+        <p className="mt-6 text-center text-sm text-muted-foreground">
+          Already have an account?{" "}
+          <Link
+            href={`/login?from=${encodeURIComponent(from)}`}
+            className="font-medium text-primary hover:underline"
+          >
+            Sign in
+          </Link>
+        </p>
       </div>
     </main>
   )
