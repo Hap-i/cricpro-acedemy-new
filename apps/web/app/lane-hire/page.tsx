@@ -30,6 +30,16 @@ interface LaneResource {
   capacity: number
 }
 
+function getTodayLocal() {
+  const d = new Date()
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`
+}
+
+function getCurrentTimeLocal() {
+  const d = new Date()
+  return `${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}`
+}
+
 export default function LaneHirePage() {
   const router = useRouter()
   const { user } = useAuth()
@@ -357,6 +367,7 @@ export default function LaneHirePage() {
                     <Input
                       id="date"
                       type="date"
+                      min={getTodayLocal()}
                       value={formData.date}
                       onChange={(e) => {
                         setFormData({ ...formData, date: e.target.value })
@@ -384,15 +395,19 @@ export default function LaneHirePage() {
                       <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-5">
                         {slots.map((slot) => {
                           const booked = slot.availableLanes === 0
+                          const isPast =
+                            selectedDate === getTodayLocal() &&
+                            slot.time <= getCurrentTimeLocal()
+                          const disabled = booked || isPast
                           const selected = selectedSlots.includes(slot.time)
                           return (
                             <button
                               key={slot.time}
                               type="button"
-                              onClick={() => !booked && toggleSlot(slot.time)}
-                              disabled={booked}
+                              onClick={() => !disabled && toggleSlot(slot.time)}
+                              disabled={disabled}
                               className={`flex flex-col items-center rounded-md border px-1 py-2 text-xs transition-colors ${
-                                booked
+                                disabled
                                   ? "cursor-not-allowed border-border/30 bg-muted/20 text-muted-foreground/40 line-through"
                                   : selected
                                     ? "border-primary bg-primary text-primary-foreground"
@@ -403,7 +418,11 @@ export default function LaneHirePage() {
                                 {formatTime(slot.time)}
                               </span>
                               <span className="mt-0.5 opacity-70">
-                                {booked ? "Booked" : "Available"}
+                                {isPast
+                                  ? "Past"
+                                  : booked
+                                    ? "Booked"
+                                    : "Available"}
                               </span>
                               <span className="mt-0.5 font-medium">
                                 £{parseFloat(slot.price).toFixed(2)}/hr
