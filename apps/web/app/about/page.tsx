@@ -83,7 +83,7 @@ export default function AboutPage() {
 
       {/* Why Choose Us */}
       <section className="bg-muted/20 py-12 md:py-16">
-        <div className="container px-4">
+        <div className="container mx-auto px-4">
           <h2 className="mb-8 text-center text-2xl font-bold md:text-3xl">
             Why Train With Us
           </h2>
@@ -137,7 +137,7 @@ export default function AboutPage() {
 
       {/* Facility Info */}
       <section className="py-12 md:py-16">
-        <div className="container px-4">
+        <div className="container mx-auto px-4">
           <div className="mx-auto max-w-4xl">
             <h2 className="mb-8 text-center text-2xl font-bold md:text-3xl">
               Our Facility
@@ -186,7 +186,7 @@ export default function AboutPage() {
 
       {/* Values */}
       <section className="bg-muted/20 py-12 md:py-16">
-        <div className="container px-4">
+        <div className="container mx-auto px-4">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="mb-6 text-2xl font-bold md:text-3xl">Our Values</h2>
             <div className="grid gap-6 sm:grid-cols-3">

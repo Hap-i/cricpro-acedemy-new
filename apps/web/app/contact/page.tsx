@@ -217,7 +217,7 @@ export default function ContactPage() {
 
       {/* FAQ Section */}
       <section className="bg-muted/20 py-12 md:py-16">
-        <div className="container px-4">
+        <div className="container mx-auto px-4">
           <div className="mx-auto max-w-3xl">
             <h2 className="mb-6 text-center text-2xl font-bold">
               Frequently Asked Questions
