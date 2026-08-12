@@ -50,7 +50,7 @@ export default function BowlingMachinePage() {
     setSelectedSlots([]);
     setTotalPrice(0);
     try {
-      const res = await fetch(`/api/slots?resourceType=lane&date=${selectedDate}`);
+      const res = await fetch(`/api/slots?resourceType=bowling_machine&date=${selectedDate}`);
       const data = await res.json();
       if (data.success && data.dates.length > 0) setSlots(data.dates[0].slots);
     } catch (e) {

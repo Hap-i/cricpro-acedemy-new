@@ -50,7 +50,7 @@ export default function SideArmPage() {
     setSelectedSlots([]);
     setTotalPrice(0);
     try {
-      const res = await fetch(`/api/slots?resourceType=lane&date=${selectedDate}`);
+      const res = await fetch(`/api/slots?resourceType=side_arm&date=${selectedDate}`);
       const data = await res.json();
       if (data.success && data.dates.length > 0) setSlots(data.dates[0].slots);
     } catch (e) {

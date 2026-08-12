@@ -50,7 +50,7 @@ export default function LaneHirePage() {
   useEffect(() => {
     async function fetchLanes() {
       try {
-        const res = await fetch('/api/admin/resources?type=lane');
+        const res = await fetch('/api/resources?type=lane');
         const data = await res.json();
         if (data.success) {
           const active: LaneResource[] = data.resources.filter((r: any) => r.active);
