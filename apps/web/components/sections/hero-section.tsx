@@ -34,14 +34,9 @@ export function HeroSection() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/crircpro-coe-logo2.png"
+              src="/NGCA-transparent-logo.png"
               alt="Next Generation Cricket Academy"
-              style={{
-                height: "200px",
-                width: "auto",
-                maskImage: "radial-gradient(ellipse 70% 80% at 50% 50%, black 55%, transparent 80%)",
-                WebkitMaskImage: "radial-gradient(ellipse 70% 80% at 50% 50%, black 55%, transparent 80%)",
-              }}
+              className="h-28 w-auto md:h-40 lg:h-44"
             />
           </motion.div>
 

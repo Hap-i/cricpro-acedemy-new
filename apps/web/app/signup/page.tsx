@@ -82,8 +82,8 @@ function SignupForm() {
     return (
       <div className="text-center">
         <div className="mb-4 flex justify-center">
-          <div className="rounded-full bg-green-100 p-4">
-            <CheckCircle className="h-10 w-10 text-green-600" />
+          <div className="rounded-full bg-green-100 p-4 dark:bg-green-500/20">
+            <CheckCircle className="h-10 w-10 text-green-600 dark:text-green-400" />
           </div>
         </div>
         <h2 className="mb-2 text-xl font-bold">Check your email</h2>

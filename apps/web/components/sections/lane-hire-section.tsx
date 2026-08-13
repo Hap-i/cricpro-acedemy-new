@@ -4,6 +4,7 @@ import { Button } from "@workspace/ui/components/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@workspace/ui/components/card";
 import { Badge } from "@workspace/ui/components/badge";
 import Link from "next/link";
+import { Check } from "lucide-react";
 import { FadeIn } from "@/components/motion/fade-in";
 import { services } from "@/lib/data";
 
@@ -23,9 +24,9 @@ export function LaneHireSection() {
                   {services.laneHire.description}
                 </p>
                 <ul className="space-y-2 text-muted-foreground">
-                  <li className="flex items-center gap-2"><span className="text-primary font-bold">✓</span> Practice at your own pace</li>
-                  <li className="flex items-center gap-2"><span className="text-primary font-bold">✓</span> Flexible 1-3 hour sessions</li>
-                  <li className="flex items-center gap-2"><span className="text-primary font-bold">✓</span> Perfect for all skill levels</li>
+                  <li className="flex items-center gap-2"><Check className="h-4 w-4 text-primary flex-shrink-0" /> Practice at your own pace</li>
+                  <li className="flex items-center gap-2"><Check className="h-4 w-4 text-primary flex-shrink-0" /> Flexible 1-3 hour sessions</li>
+                  <li className="flex items-center gap-2"><Check className="h-4 w-4 text-primary flex-shrink-0" /> Perfect for all skill levels</li>
                 </ul>
                 <div className="pt-4">
                   <p className="text-2xl font-bold text-primary">

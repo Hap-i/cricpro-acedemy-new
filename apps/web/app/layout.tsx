@@ -3,8 +3,7 @@ import type { Metadata } from "next";
 import "@workspace/ui/globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { AuthProvider } from "@/lib/context/auth"
-import { Header } from "@/components/header"
-import { StickyCTA } from "@/components/sticky-cta"
+import { SiteChrome } from "@/components/site-chrome"
 import { cn } from "@workspace/ui/lib/utils";
 
 const inter = Inter({subsets:['latin'],variable:'--font-sans'})
@@ -33,9 +32,7 @@ export default function RootLayout({
       <body>
         <ThemeProvider>
           <AuthProvider>
-            <Header />
-            {children}
-            <StickyCTA />
+            <SiteChrome>{children}</SiteChrome>
           </AuthProvider>
         </ThemeProvider>
       </body>

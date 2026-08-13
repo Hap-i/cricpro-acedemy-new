@@ -62,7 +62,7 @@ function AdminLoginForm() {
         />
       </div>
       {error && (
-        <p className="rounded-md bg-red-50 px-3 py-2 text-sm text-red-600">
+        <p className="rounded-md bg-destructive/10 px-3 py-2 text-sm text-destructive">
           {error}
         </p>
       )}
@@ -75,7 +75,7 @@ function AdminLoginForm() {
 
 export default function AdminLoginPage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4">
+    <div className="flex min-h-screen items-center justify-center px-4">
       <div className="w-full max-w-sm">
         <div className="mb-8 text-center">
           <h1 className="text-2xl font-bold">CricPro Admin</h1>

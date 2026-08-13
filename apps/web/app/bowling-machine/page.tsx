@@ -11,6 +11,8 @@ import { ArrowLeft, Target, Zap, Clock, CheckCircle, Shield } from "lucide-react
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/context/auth";
+import { isPastSlot } from "@/lib/time";
+import { DatePicker } from "@/components/date-picker";
 
 
 export default function BowlingMachinePage() {
@@ -203,13 +205,11 @@ export default function BowlingMachinePage() {
               <CardContent>
                 <form className="space-y-6" onSubmit={handleSubmit}>
                   <div className="space-y-2">
-                    <Label htmlFor="date">Preferred Date</Label>
-                    <Input
+                    <Label>Preferred Date</Label>
+                    <DatePicker
                       id="date"
-                      type="date"
                       value={selectedDate}
-                      onChange={(e) => setSelectedDate(e.target.value)}
-                      required
+                      onChange={setSelectedDate}
                     />
                   </div>
 
@@ -227,15 +227,17 @@ export default function BowlingMachinePage() {
                       <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2">
                         {slots.map((slot) => {
                           const booked = slot.availableLanes === 0;
+                          const isPast = isPastSlot(slot.time, selectedDate);
+                          const disabled = booked || isPast;
                           const selected = selectedSlots.includes(slot.time);
                           return (
                             <button
                               key={slot.time}
                               type="button"
-                              onClick={() => !booked && toggleSlot(slot.time)}
-                              disabled={booked}
+                              onClick={() => !disabled && toggleSlot(slot.time)}
+                              disabled={disabled}
                               className={`flex flex-col items-center py-2 px-1 rounded-md border text-xs transition-colors ${
-                                booked
+                                disabled
                                   ? 'border-border/30 bg-muted/20 text-muted-foreground/40 cursor-not-allowed line-through'
                                   : selected
                                   ? 'border-primary bg-primary text-primary-foreground'
@@ -243,7 +245,7 @@ export default function BowlingMachinePage() {
                               }`}
                             >
                               <span className="font-semibold text-sm">{formatTime(slot.time)}</span>
-                              <span className="opacity-70 mt-0.5">{booked ? 'Booked' : 'Available'}</span>
+                              <span className="opacity-70 mt-0.5">{booked ? 'Booked' : isPast ? 'Past' : 'Available'}</span>
                               <span className="font-medium mt-0.5">£{parseFloat(slot.price).toFixed(2)}/hr</span>
                             </button>
                           );

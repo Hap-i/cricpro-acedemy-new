@@ -5,10 +5,11 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@workspace/ui/components/button";
-import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@workspace/ui/components/sheet";
+import { Sheet, SheetContent, SheetDescription, SheetTrigger, SheetTitle } from "@workspace/ui/components/sheet";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@workspace/ui/components/dropdown-menu";
 import { Menu, X, LogOut, User } from "lucide-react";
 import { useAuth } from "@/lib/context/auth";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const navLinks = [
   { href: "/lane-hire", label: "Lane Hire" },
@@ -56,21 +57,20 @@ export function Header() {
       }`}
     >
       <div className="container px-4">
-        <div className="flex h-24 items-center justify-between">
+        <div className="flex h-16 md:h-20 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/crircpro-coe-logo.png"
+              src="/NGCA-transparent-logo.png"
               alt="Next Gen Cricket Academy"
-              height={100}
-              width={100}
+              className="h-12 w-auto md:h-14"
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-6">
-            {navLinks.slice(0, 6).map((link) => (
+          <nav className="hidden xl:flex items-center gap-5">
+            {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -83,7 +83,7 @@ export function Header() {
           </nav>
 
           {/* Desktop CTA */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden xl:flex items-center gap-3">
             {!loading && !user && (
               <>
                 <Button asChild variant="ghost" size="sm">
@@ -122,11 +122,12 @@ export function Header() {
                 <Link href="/lane-hire">Book Now</Link>
               </Button>
             </motion.div>
+            <ThemeToggle />
           </div>
 
           {/* Mobile Menu */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild className="lg:hidden">
+            <SheetTrigger asChild className="xl:hidden">
               <Button variant="ghost" size="icon" aria-label="Open menu">
                 <AnimatePresence mode="wait" initial={false}>
                   {isOpen ? (
@@ -143,6 +144,7 @@ export function Header() {
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] sm:w-[350px] bg-background border-l border-border/60">
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+              <SheetDescription className="sr-only">Navigate to the main sections of the site</SheetDescription>
               <div className="flex flex-col gap-6 mt-8">
                 <Link
                   href="/"
@@ -151,9 +153,9 @@ export function Header() {
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="/crircpro-coe-logo.png"
+                    src="/NGCA-transparent-logo.png"
                     alt="Next Gen Cricket Academy"
-                    style={{ height: "48px", width: "auto" }}
+                    style={{ height: "40px", width: "auto" }}
                   />
                   <span className="font-bold text-lg">Next Gen Cricket</span>
                 </Link>
@@ -175,7 +177,11 @@ export function Header() {
                     </motion.div>
                   ))}
                 </nav>
-                <Button asChild className="w-full mt-4">
+                <div className="flex items-center justify-between rounded-lg border border-border/60 px-3 py-2">
+                  <span className="text-sm font-medium">Theme</span>
+                  <ThemeToggle />
+                </div>
+                <Button asChild className="w-full mt-2">
                   <Link href="/lane-hire" onClick={() => setIsOpen(false)}>
                     Book Now
                   </Link>
