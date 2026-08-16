@@ -7,12 +7,13 @@ import { Input } from "@workspace/ui/components/input";
 import { Label } from "@workspace/ui/components/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@workspace/ui/components/select";
 import Link from "next/link";
-import { ArrowLeft, Target, Zap, Clock, CheckCircle, Shield } from "lucide-react";
+import { ArrowLeft, Target, Zap, Clock, Shield } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/context/auth";
 import { isPastSlot } from "@/lib/time";
 import { DatePicker } from "@/components/date-picker";
+import { RateSchedule } from "@/components/rate-schedule";
 
 
 export default function BowlingMachinePage() {
@@ -131,34 +132,8 @@ export default function BowlingMachinePage() {
       {/* Pricing */}
       <section className="py-12 md:py-16">
         <div className="container px-4 mx-auto">
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <Card className="border-2 border-muted">
-              <CardHeader>
-                <CardTitle><Badge variant="secondary">Off Peak</Badge></CardTitle>
-                <CardDescription>Midday & late evening</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="text-4xl font-bold text-primary mb-2">£22</div>
-                <p className="text-muted-foreground text-sm mb-4">per hour</p>
-                <ul className="space-y-2 text-sm">
-                  <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-green-500" />12 PM – 4 PM</li>
-                  <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-green-500" />10 PM – 12 AM</li>
-                </ul>
-              </CardContent>
-            </Card>
-            <Card className="border-2 border-primary">
-              <CardHeader>
-                <CardTitle><Badge className="bg-primary">Peak</Badge></CardTitle>
-                <CardDescription>After school & evenings</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="text-4xl font-bold text-primary mb-2">£32</div>
-                <p className="text-muted-foreground text-sm mb-4">per hour</p>
-                <ul className="space-y-2 text-sm">
-                  <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-green-500" />4 PM – 10 PM</li>
-                </ul>
-              </CardContent>
-            </Card>
+          <div className="max-w-md mx-auto">
+            <RateSchedule offPeakPrice={22} peakPrice={32} />
           </div>
         </div>
       </section>

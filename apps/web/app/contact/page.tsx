@@ -10,8 +10,8 @@ import { ArrowLeft, MapPin, Phone, Mail, Clock, MessageCircle } from "lucide-rea
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Next Gen Cricket Academy",
-  description: "Get in touch with Next Gen Cricket Academy. Questions about lane hire, coaching, or bookings? We'd love to hear from you.",
+  title: "Contact Us | Cricpro Centre of Excellence",
+  description: "Get in touch with Cricpro Centre of Excellence. Questions about lane hire, coaching, or bookings? We'd love to hear from you.",
 };
 
 export default function ContactPage() {
@@ -53,7 +53,7 @@ export default function ContactPage() {
                     <div>
                       <h3 className="font-semibold mb-1">Location</h3>
                       <p className="text-muted-foreground">
-                        Next Gen Cricket Academy<br />
+                        Cricpro Centre of Excellence<br />
                         [Address Coming Soon]
                       </p>
                     </div>

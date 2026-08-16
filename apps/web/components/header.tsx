@@ -63,7 +63,7 @@ export function Header() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/NGCA-transparent-logo.png"
-              alt="Next Gen Cricket Academy"
+              alt="Cricpro Centre of Excellence"
               className="h-12 w-auto md:h-14"
             />
           </Link>
@@ -154,10 +154,10 @@ export function Header() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src="/NGCA-transparent-logo.png"
-                    alt="Next Gen Cricket Academy"
+                    alt="Cricpro Centre of Excellence"
                     style={{ height: "40px", width: "auto" }}
                   />
-                  <span className="font-bold text-lg">Next Gen Cricket</span>
+                  <span className="font-bold text-lg">Cricpro</span>
                 </Link>
                 <nav className="flex flex-col gap-1">
                   {navLinks.map((link, i) => (

@@ -30,7 +30,7 @@ export function Footer() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/NGCA-transparent-logo.png"
-                alt="Next Gen Cricket Academy"
+                alt="Cricpro Centre of Excellence"
                 className="h-12 w-auto"
               />
             </Link>
@@ -88,7 +88,7 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-2.5">
                 <MapPin className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary" />
-                <span>Next Gen Cricket Academy</span>
+                <span>Cricpro Centre of Excellence</span>
               </li>
               <li className="flex items-start gap-2.5">
                 <Mail className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary" />
@@ -105,7 +105,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-border/40 pt-6 text-center text-sm text-muted-foreground sm:flex-row sm:text-left">
-          <p>© {year} Next Gen Cricket Academy. All rights reserved.</p>
+          <p>© {year} Cricpro Centre of Excellence. All rights reserved.</p>
           <p className="text-xs">Practice to Perfection.</p>
         </div>
       </div>

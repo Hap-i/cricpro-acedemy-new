@@ -14,8 +14,8 @@ const fontMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Next Gen Cricket Academy",
-  description: "Next Gen Cricket Academy is a premier cricket training facility dedicated to nurturing and developing the next generation of cricketing talent. Our academy offers world-class coaching, state-of-the-art facilities, and a comprehensive training program designed to help aspiring cricketers reach their full potential. Whether you're a beginner looking to learn the basics or an experienced player aiming to refine your skills, Next Gen Cricket Academy provides the perfect environment for growth and success in the sport of cricket.",
+  title: "Cricpro Centre of Excellence",
+  description: "Cricpro Centre of Excellence is a premier cricket training facility dedicated to nurturing and developing the next generation of cricketing talent. Our academy offers world-class coaching, state-of-the-art facilities, and a comprehensive training program designed to help aspiring cricketers reach their full potential. Whether you're a beginner looking to learn the basics or an experienced player aiming to refine your skills, Cricpro Centre of Excellence provides the perfect environment for growth and success in the sport of cricket.",
 };
 
 export default function RootLayout({

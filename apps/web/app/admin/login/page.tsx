@@ -80,7 +80,7 @@ export default function AdminLoginPage() {
         <div className="mb-8 text-center">
           <h1 className="text-2xl font-bold">CricPro Admin</h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            Next Gen Cricket Academy
+            Cricpro Centre of Excellence
           </p>
         </div>
         <Card>

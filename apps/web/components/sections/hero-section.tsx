@@ -35,7 +35,7 @@ export function HeroSection() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/NGCA-transparent-logo.png"
-              alt="Next Generation Cricket Academy"
+              alt="Cricpro Centre of Excellence"
               className="h-28 w-auto md:h-40 lg:h-44"
             />
           </motion.div>

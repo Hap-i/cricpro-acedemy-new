@@ -7,12 +7,13 @@ import { Input } from "@workspace/ui/components/input";
 import { Label } from "@workspace/ui/components/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@workspace/ui/components/select";
 import Link from "next/link";
-import { ArrowLeft, Clock, Users, Calendar, CheckCircle } from "lucide-react";
+import { ArrowLeft, Clock, Users, Calendar, CheckCircle, Minus, Plus } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/context/auth";
 import { isPastSlot } from "@/lib/time";
 import { DatePicker } from "@/components/date-picker";
+import { RateSchedule } from "@/components/rate-schedule";
 
 interface LaneResource { id: string; name: string; capacity: number }
 
@@ -102,6 +103,13 @@ export default function LaneHirePage() {
     );
   }
 
+  function adjustPlayers(delta: number) {
+    setFormData(prev => {
+      const next = Math.min(6, Math.max(1, parseInt(prev.players) + delta));
+      return { ...prev, players: String(next) };
+    });
+  }
+
   useEffect(() => {
     let price = 0;
     selectedSlots.forEach(slotTime => {
@@ -170,54 +178,8 @@ export default function LaneHirePage() {
       {/* Pricing Section */}
       <section className="py-12 md:py-16">
         <div className="container px-4 mx-auto">
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Off Peak */}
-            <Card className="border-2 border-muted">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Badge variant="secondary">Off Peak</Badge>
-                </CardTitle>
-                <CardDescription>Best value for flexible training</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="text-4xl font-bold text-primary mb-2">£15</div>
-                <p className="text-muted-foreground text-sm mb-4">per hour</p>
-                <ul className="space-y-2 text-sm">
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    12 PM – 4 PM
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    10 PM – 12 AM
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            {/* Peak */}
-            <Card className="border-2 border-primary">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Badge className="bg-primary">Peak</Badge>
-                </CardTitle>
-                <CardDescription>Evening & afternoon sessions</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="text-4xl font-bold text-primary mb-2">£25</div>
-                <p className="text-muted-foreground text-sm mb-4">per hour</p>
-                <ul className="space-y-2 text-sm">
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    4 PM – 10 PM
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    Most popular times
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
+          <div className="max-w-md mx-auto">
+            <RateSchedule offPeakPrice={15} peakPrice={25} />
           </div>
         </div>
       </section>
@@ -384,23 +346,36 @@ export default function LaneHirePage() {
                       </Select>
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="players">Number of Players</Label>
-                      <Select
-                        value={formData.players}
-                        onValueChange={(value) => setFormData({...formData, players: value})}
-                      >
-                        <SelectTrigger id="players">
-                          <SelectValue placeholder="Select players" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="1">1 Player</SelectItem>
-                          <SelectItem value="2">2 Players</SelectItem>
-                          <SelectItem value="3">3 Players</SelectItem>
-                          <SelectItem value="4">4 Players</SelectItem>
-                          <SelectItem value="5">5 Players</SelectItem>
-                          <SelectItem value="6">6 Players</SelectItem>
-                        </SelectContent>
-                      </Select>
+                      <Label>Number of Players</Label>
+                      <div className="flex items-center gap-3">
+                        <button
+                          type="button"
+                          onClick={() => adjustPlayers(-1)}
+                          disabled={parseInt(formData.players) <= 1}
+                          aria-label="Decrease number of players"
+                          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-border text-muted-foreground transition-colors hover:bg-muted hover:text-foreground disabled:pointer-events-none disabled:opacity-40"
+                        >
+                          <Minus className="h-4 w-4" />
+                        </button>
+                        <div className="flex-1 rounded-lg border border-border bg-muted/30 px-3 py-2 text-center">
+                          <span className="text-lg font-semibold tabular-nums" aria-live="polite">
+                            {formData.players}
+                          </span>
+                          <span className="ml-1.5 text-sm text-muted-foreground">
+                            {formData.players === "1" ? "Player" : "Players"}
+                          </span>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => adjustPlayers(1)}
+                          disabled={parseInt(formData.players) >= 6}
+                          aria-label="Increase number of players"
+                          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-border text-muted-foreground transition-colors hover:bg-muted hover:text-foreground disabled:pointer-events-none disabled:opacity-40"
+                        >
+                          <Plus className="h-4 w-4" />
+                        </button>
+                      </div>
+                      <p className="text-xs text-muted-foreground">Up to 6 players per lane</p>
                     </div>
                   </div>
 

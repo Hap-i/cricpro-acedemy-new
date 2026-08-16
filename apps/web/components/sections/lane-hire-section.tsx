@@ -54,7 +54,7 @@ export function LaneHireSection() {
                     </div>
                     <p className="text-2xl font-bold text-primary">£15/hr</p>
                   </div>
-                  <div className="flex justify-between items-center p-4 bg-background/60 rounded-lg border border-primary/20">
+                  <div className="flex justify-between items-center p-4 bg-background/60 rounded-lg border border-border/40">
                     <div>
                       <p className="font-semibold">Peak</p>
                       <p className="text-sm text-muted-foreground">4PM - 10PM</p>
