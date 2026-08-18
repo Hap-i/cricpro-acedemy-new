@@ -1,7 +1,7 @@
 export const services = {
   laneHire: {
     title: "Lane Hire",
-    description: "Practice at your own pace with our premium indoor lanes. Perfect for solo training or playing with friends.",
+    description: "Level up your game with premium indoor lanes made for precision practice and competitive fun.",
     price: {
       offPeak: 15,
       peak: 25,
@@ -50,7 +50,7 @@ export const services = {
   },
   coaching: {
     title: "One-to-One Coaching",
-    description: "Personalized coaching from experienced coaches. Accelerate your development with tailored feedback and training.",
+    description: "Unlock your full potential through personalised coaching sessions, expert insight, and performance-focused training tailored to you.",
     price: "Coming Soon",
     cta: "Enquire About Coaching",
     path: "/coaching",
