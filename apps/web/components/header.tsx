@@ -20,6 +20,7 @@ import {
 } from "@workspace/ui/components/dropdown-menu"
 import { Menu, X, LogOut, User } from "lucide-react"
 import { useAuth } from "@/lib/context/auth"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 const navLinks = [
   { href: "/lane-hire", label: "Lane Hire" },
@@ -148,6 +149,7 @@ export function Header() {
                 <Link href="/lane-hire">Book Now</Link>
               </Button>
             </motion.div>
+            <ThemeToggle />
           </div>
 
           {/* Mobile Menu */}
@@ -218,6 +220,10 @@ export function Header() {
                     </motion.div>
                   ))}
                 </nav>
+                <div className="flex items-center justify-between rounded-lg border border-border/60 px-3 py-2">
+                  <span className="text-sm font-medium">Theme</span>
+                  <ThemeToggle />
+                </div>
                 <Button asChild className="mt-4 w-full">
                   <Link href="/lane-hire" onClick={() => setIsOpen(false)}>
                     Book Now
