@@ -191,7 +191,7 @@ export default function AdminResourcesPage() {
                 <button
                   type="button"
                   onClick={resetForm}
-                  className="px-4 py-2 border rounded-lg"
+                  className="px-4 py-2 border rounded-lg bg-background text-foreground"
                 >
                   Cancel
                 </button>
@@ -233,19 +233,19 @@ export default function AdminResourcesPage() {
               <div className="flex gap-2 mt-4 pt-4 border-t">
                 <Link
                   href={`/admin/resources/${resource.id}/availability-rules`}
-                  className="flex-1 px-3 py-2 text-sm border rounded hover:bg-muted text-center"
+                  className="flex-1 px-3 py-2 text-sm border rounded hover:bg-muted bg-background text-foreground text-center"
                 >
                   Settings
                 </Link>
                 <button
                   onClick={() => toggleActive(resource.id, resource.active)}
-                  className="flex-1 px-3 py-2 text-sm border rounded hover:bg-muted"
+                  className="flex-1 px-3 py-2 text-sm border rounded hover:bg-muted bg-background text-foreground"
                 >
                   {resource.active ? 'Disable' : 'Enable'}
                 </button>
                 <button
                   onClick={() => editResource(resource)}
-                  className="flex-1 px-3 py-2 text-sm border rounded hover:bg-muted"
+                  className="flex-1 px-3 py-2 text-sm border rounded hover:bg-muted bg-background text-foreground"
                 >
                   Edit
                 </button>

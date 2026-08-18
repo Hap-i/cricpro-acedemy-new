@@ -275,7 +275,7 @@ export default function AdminGroupSessionsPage() {
                 <button
                   type="button"
                   onClick={resetForm}
-                  className="px-4 py-2 border rounded-lg"
+                  className="px-4 py-2 border rounded-lg bg-background text-foreground"
                 >
                   Cancel
                 </button>
@@ -326,19 +326,19 @@ export default function AdminGroupSessionsPage() {
                     <div className="flex gap-2">
                       <button
                         onClick={() => setSelectedSession(session.id)}
-                        className="px-3 py-1 text-sm border rounded hover:bg-muted"
+                        className="px-3 py-1 text-sm border rounded hover:bg-muted bg-background text-foreground"
                       >
                         View Bookings
                       </button>
                       <button
                         onClick={() => editSession(session)}
-                        className="px-3 py-1 text-sm border rounded hover:bg-muted"
+                        className="px-3 py-1 text-sm border rounded hover:bg-muted bg-background text-foreground"
                       >
                         Edit
                       </button>
                       <button
                         onClick={() => toggleActive(session.id, session.active)}
-                        className="px-3 py-1 text-sm border rounded hover:bg-muted"
+                        className="px-3 py-1 text-sm border rounded hover:bg-muted bg-background text-foreground"
                       >
                         {session.active ? 'Disable' : 'Enable'}
                       </button>
