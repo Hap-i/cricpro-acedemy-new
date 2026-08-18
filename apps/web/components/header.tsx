@@ -10,6 +10,7 @@ import {
   SheetContent,
   SheetTrigger,
   SheetTitle,
+  SheetDescription,
 } from "@workspace/ui/components/sheet"
 import {
   DropdownMenu,
@@ -186,6 +187,7 @@ export function Header() {
               className="w-[300px] border-l border-border/60 bg-background sm:w-[350px]"
             >
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+              <SheetDescription className="sr-only">Navigate to the main sections of the site</SheetDescription>
               <div className="mt-8 flex flex-col gap-6">
                 <Link
                   href="/"
