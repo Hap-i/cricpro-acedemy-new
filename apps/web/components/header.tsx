@@ -205,21 +205,15 @@ export function Header() {
                   <span className="text-lg font-bold">Cricpro</span>
                 </Link>
                 <nav className="flex flex-col gap-1">
-                  {navLinks.map((link, i) => (
-                    <motion.div
+                  {navLinks.map((link) => (
+                    <Link
                       key={link.href}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: i * 0.05, duration: 0.3 }}
+                      href={link.href}
+                      className="block rounded-lg px-3 py-2 text-lg font-medium transition-colors hover:bg-primary/10 hover:text-primary"
+                      onClick={() => setIsOpen(false)}
                     >
-                      <Link
-                        href={link.href}
-                        className="block rounded-lg px-3 py-2 text-lg font-medium transition-colors hover:bg-primary/10 hover:text-primary"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        {link.label}
-                      </Link>
-                    </motion.div>
+                      {link.label}
+                    </Link>
                   ))}
                 </nav>
                 <div className="flex items-center justify-between rounded-lg border border-border/60 px-3 py-2">
