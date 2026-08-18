@@ -151,7 +151,7 @@ export default function AdminResourcesPage() {
                   type="text"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full border rounded-lg px-3 py-2"
+                  className="w-full border rounded-lg px-3 py-2 bg-background text-foreground"
                   required
                 />
               </div>
@@ -160,7 +160,7 @@ export default function AdminResourcesPage() {
                 <select
                   value={formData.type}
                   onChange={(e) => setFormData({ ...formData, type: e.target.value })}
-                  className="w-full border rounded-lg px-3 py-2"
+                  className="w-full border rounded-lg px-3 py-2 bg-background text-foreground"
                 >
                   <option value="lane">Lane</option>
                   <option value="bowling_machine">Bowling Machine</option>
@@ -173,7 +173,7 @@ export default function AdminResourcesPage() {
                   type="number"
                   value={formData.capacity}
                   onChange={(e) => setFormData({ ...formData, capacity: parseInt(e.target.value) })}
-                  className="w-full border rounded-lg px-3 py-2"
+                  className="w-full border rounded-lg px-3 py-2 bg-background text-foreground"
                   min="1"
                 />
               </div>

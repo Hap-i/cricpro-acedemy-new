@@ -106,7 +106,7 @@ export default function AdminBookingsPage() {
         <select
           value={statusFilter}
           onChange={(e) => { setStatusFilter(e.target.value); setPage(1); }}
-          className="border rounded-lg px-4 py-2"
+          className="border rounded-lg px-4 py-2 bg-background text-foreground"
         >
           <option value="">All Statuses</option>
           <option value="pending_payment">Pending Payment</option>

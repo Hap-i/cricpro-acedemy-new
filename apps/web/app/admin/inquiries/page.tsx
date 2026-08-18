@@ -99,7 +99,7 @@ export default function AdminInquiriesPage() {
           <select
             value={typeFilter}
             onChange={(e) => { setTypeFilter(e.target.value); setPage(1); }}
-            className="border rounded-lg px-4 py-2"
+            className="border rounded-lg px-4 py-2 bg-background text-foreground"
           >
             <option value="">All Types</option>
             <option value="coaching">Coaching</option>
@@ -110,7 +110,7 @@ export default function AdminInquiriesPage() {
           <select
             value={statusFilter}
             onChange={(e) => { setStatusFilter(e.target.value); setPage(1); }}
-            className="border rounded-lg px-4 py-2"
+            className="border rounded-lg px-4 py-2 bg-background text-foreground"
           >
             <option value="">All Statuses</option>
             <option value="new">New</option>

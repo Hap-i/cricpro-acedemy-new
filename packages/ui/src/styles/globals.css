@@ -200,6 +200,15 @@
     @apply bg-background text-foreground;
     letter-spacing: var(--tracking-normal);
   }
+  /* Native form controls (admin filters/forms) follow the theme so they
+     don't stay white in dark mode. shadcn controls carry data-slot and are
+     styled by their own utilities, so they're excluded here. */
+  select,
+  input:not([data-slot]),
+  textarea:not([data-slot]) {
+    background-color: var(--background);
+    color: var(--foreground);
+  }
   button:not(:disabled),
   [role="button"]:not(:disabled) {
     cursor: pointer;

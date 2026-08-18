@@ -134,7 +134,7 @@ export default function AdminBlockedSlotsPage() {
                 <select
                   value={formData.resource_id}
                   onChange={(e) => setFormData({ ...formData, resource_id: e.target.value })}
-                  className="w-full border rounded-lg px-3 py-2"
+                  className="w-full border rounded-lg px-3 py-2 bg-background text-foreground"
                   required
                 >
                   <option value="">Select a resource</option>
@@ -149,7 +149,7 @@ export default function AdminBlockedSlotsPage() {
                   type="datetime-local"
                   value={formData.start_at}
                   onChange={(e) => setFormData({ ...formData, start_at: e.target.value })}
-                  className="w-full border rounded-lg px-3 py-2"
+                  className="w-full border rounded-lg px-3 py-2 bg-background text-foreground"
                   required
                 />
               </div>
@@ -159,7 +159,7 @@ export default function AdminBlockedSlotsPage() {
                   type="datetime-local"
                   value={formData.end_at}
                   onChange={(e) => setFormData({ ...formData, end_at: e.target.value })}
-                  className="w-full border rounded-lg px-3 py-2"
+                  className="w-full border rounded-lg px-3 py-2 bg-background text-foreground"
                   required
                 />
               </div>
@@ -169,7 +169,7 @@ export default function AdminBlockedSlotsPage() {
                   type="text"
                   value={formData.reason}
                   onChange={(e) => setFormData({ ...formData, reason: e.target.value })}
-                  className="w-full border rounded-lg px-3 py-2"
+                  className="w-full border rounded-lg px-3 py-2 bg-background text-foreground"
                   placeholder="Maintenance, event, etc."
                   required
                 />

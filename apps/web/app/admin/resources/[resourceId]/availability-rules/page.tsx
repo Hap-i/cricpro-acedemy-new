@@ -160,7 +160,7 @@ export default function AvailabilityRulesPage() {
                 <select
                   value={formData.day_of_week}
                   onChange={(e) => setFormData({ ...formData, day_of_week: parseInt(e.target.value) })}
-                  className="w-full border rounded-lg px-3 py-2"
+                  className="w-full border rounded-lg px-3 py-2 bg-background text-foreground"
                 >
                   {dayNames.map((day, i) => (
                     <option key={i} value={i}>{day}</option>
@@ -174,7 +174,7 @@ export default function AvailabilityRulesPage() {
                     type="time"
                     value={formData.start_time}
                     onChange={(e) => setFormData({ ...formData, start_time: e.target.value })}
-                    className="w-full border rounded-lg px-3 py-2"
+                    className="w-full border rounded-lg px-3 py-2 bg-background text-foreground"
                     required
                   />
                 </div>
@@ -184,7 +184,7 @@ export default function AvailabilityRulesPage() {
                     type="time"
                     value={formData.end_time}
                     onChange={(e) => setFormData({ ...formData, end_time: e.target.value })}
-                    className="w-full border rounded-lg px-3 py-2"
+                    className="w-full border rounded-lg px-3 py-2 bg-background text-foreground"
                     required
                   />
                 </div>
@@ -196,7 +196,7 @@ export default function AvailabilityRulesPage() {
                     type="number"
                     value={formData.slot_duration_mins}
                     onChange={(e) => setFormData({ ...formData, slot_duration_mins: parseInt(e.target.value) })}
-                    className="w-full border rounded-lg px-3 py-2"
+                    className="w-full border rounded-lg px-3 py-2 bg-background text-foreground"
                     min="15"
                     step="15"
                   />
@@ -207,7 +207,7 @@ export default function AvailabilityRulesPage() {
                     type="number"
                     value={formData.buffer_mins}
                     onChange={(e) => setFormData({ ...formData, buffer_mins: parseInt(e.target.value) })}
-                    className="w-full border rounded-lg px-3 py-2"
+                    className="w-full border rounded-lg px-3 py-2 bg-background text-foreground"
                     min="0"
                   />
                 </div>
