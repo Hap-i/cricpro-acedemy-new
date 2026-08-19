@@ -196,7 +196,7 @@ export function Header() {
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="/crircpro-coe-logo2.png"
+                    src="/crircpro-coe-logo.png"
                     alt="Cricpro Centre of Excellence"
                     // style={{ height: "48px", width: "auto" }}
                     height={120}
