@@ -93,7 +93,7 @@ export function Footer() {
               <li className="flex items-start gap-2.5">
                 <Mail className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary" />
                 <a href="mailto:info@nextgencricket.co.uk" className="transition-colors hover:text-primary">
-                  info@nextgencricket.co.uk
+                  cricprolimited@hotmail.com
                 </a>
               </li>
               <li className="flex items-start gap-2.5">

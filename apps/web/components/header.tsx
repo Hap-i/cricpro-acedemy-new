@@ -156,7 +156,7 @@ export function Header() {
           {/* Mobile Menu */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild className="lg:hidden">
-              <Button variant="ghost" size="icon" aria-label="Open menu">
+              <Button variant="ghost" size="icon-lg" aria-label="Open menu">
                 <AnimatePresence mode="wait" initial={false}>
                   {isOpen ? (
                     <motion.div
@@ -166,7 +166,7 @@ export function Header() {
                       exit={{ rotate: 90, opacity: 0 }}
                       transition={{ duration: 0.15 }}
                     >
-                      <X className="h-6 w-6" />
+                      <X className="size-7" />
                     </motion.div>
                   ) : (
                     <motion.div
@@ -176,7 +176,7 @@ export function Header() {
                       exit={{ rotate: -90, opacity: 0 }}
                       transition={{ duration: 0.15 }}
                     >
-                      <Menu className="h-6 w-6" />
+                      <Menu className="size-7" />
                     </motion.div>
                   )}
                 </AnimatePresence>
