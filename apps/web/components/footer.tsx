@@ -29,7 +29,7 @@ export function Footer() {
             <Link href="/" className="inline-block">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/NGCA-transparent-logo.png"
+                src="/crircpro-coe-logo.png"
                 alt="Cricpro Centre of Excellence"
                 className="h-12 w-auto"
               />

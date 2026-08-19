@@ -166,7 +166,7 @@ export function Header() {
                       exit={{ rotate: 90, opacity: 0 }}
                       transition={{ duration: 0.15 }}
                     >
-                      <X className="h-5 w-5" />
+                      <X className="h-6 w-6" />
                     </motion.div>
                   ) : (
                     <motion.div
@@ -176,7 +176,7 @@ export function Header() {
                       exit={{ rotate: -90, opacity: 0 }}
                       transition={{ duration: 0.15 }}
                     >
-                      <Menu className="h-5 w-5" />
+                      <Menu className="h-6 w-6" />
                     </motion.div>
                   )}
                 </AnimatePresence>
