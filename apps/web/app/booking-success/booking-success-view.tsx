@@ -31,6 +31,8 @@ function formatDate(iso: string) {
         day: 'numeric',
         month: 'long',
         year: 'numeric',
+        // Stored as wall-clock UK time (naive → UTC); render in UTC to avoid a BST offset.
+        timeZone: 'UTC',
       });
 }
 
@@ -38,7 +40,7 @@ function formatTime(iso: string) {
   const d = new Date(iso);
   return Number.isNaN(d.getTime())
     ? iso
-    : d.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+    : d.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'UTC' });
 }
 
 function formatAmount(amount: number | string | undefined) {

@@ -81,7 +81,13 @@ function formatTime(iso: string): string {
   const d = new Date(iso)
   return Number.isNaN(d.getTime())
     ? iso
-    : d.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })
+    : d.toLocaleTimeString("en-GB", {
+        hour: "2-digit",
+        minute: "2-digit",
+        // Booking times are stored as wall-clock UK time (naive → UTC); render in
+        // UTC so the displayed time matches what was chosen, with no BST/GMT offset.
+        timeZone: "UTC",
+      })
 }
 
 function bookingConfirmationHtml(b: BookingEmailData) {
@@ -91,6 +97,7 @@ function bookingConfirmationHtml(b: BookingEmailData) {
     day: "numeric",
     month: "long",
     year: "numeric",
+    timeZone: "UTC",
   })
   const startTime = formatTime(b.start_at)
   const endTime = b.end_at ? formatTime(b.end_at) : null
