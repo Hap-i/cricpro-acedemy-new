@@ -11,6 +11,7 @@ import {
   CreditCard,
 } from 'lucide-react';
 import { Button } from '@workspace/ui/components/button';
+import { LocationDirections } from '@/components/location-directions';
 
 interface VerifiedBooking {
   booking_reference?: string;
@@ -151,6 +152,10 @@ export function BookingSuccessView({
             )}
           </div>
         )}
+
+        <div className="bg-muted/40 rounded-lg px-4 py-4 mb-6 text-left">
+          <LocationDirections />
+        </div>
 
         {status === 'verifying' && (
           <p className="flex items-center justify-center gap-2 text-sm text-muted-foreground mb-6">
