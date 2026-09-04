@@ -84,7 +84,7 @@ export function HeroSection() {
                 size="lg"
                 className="px-8 text-lg shadow-lg hover:shadow-primary/40"
               >
-                <Link href={services.laneHire.path}>Book a Lane</Link>
+                <Link href={`${services.laneHire.path}#booking-form`}>Book a Lane</Link>
               </Button>
             </motion.div>
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
