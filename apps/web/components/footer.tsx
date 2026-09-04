@@ -97,7 +97,7 @@ export function Footer() {
                   href="mailto:info@cricprocoe.com"
                   className="transition-colors hover:text-primary"
                 >
-                  cricprolimited@hotmail.com
+                  info@cricprocoe.com
                 </a>
               </li>
               <li className="flex items-start gap-2.5">
